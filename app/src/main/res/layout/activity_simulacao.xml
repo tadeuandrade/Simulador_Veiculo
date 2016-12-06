@@ -1,0 +1,149 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/activity_simulacao"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:fillViewport="true"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    tools:context="com.example.tadeu.simulador_veiculo.simulacao">
+
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingBottom="@dimen/activity_vertical_margin"
+        android:paddingLeft="@dimen/activity_horizontal_margin"
+        android:paddingRight="@dimen/activity_horizontal_margin"
+        android:paddingTop="@dimen/activity_vertical_margin">
+
+
+        <TextView
+            android:text="Veiculos"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentStart="true"
+            android:id="@+id/veiculo_text" />
+
+        <Spinner
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="17dp"
+            android:id="@+id/veiculo_spinner"
+            android:layout_below="@+id/veiculo_text"
+            android:layout_alignParentStart="true" />
+
+        <TextView
+            android:text="Valor do veiculo"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/veiculo_spinner"
+            android:layout_alignParentStart="true"
+            android:layout_marginTop="17dp"
+            android:id="@+id/valor_veiculo_text" />
+
+        <EditText
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:inputType="numberDecimal"
+            android:ems="10"
+            android:layout_below="@+id/valor_veiculo_text"
+            android:layout_alignParentStart="true"
+            android:layout_marginStart="12dp"
+            android:layout_marginTop="14dp"
+            android:id="@+id/valor_veiculo"
+            android:hint="Digite o valor do veiculo" />
+
+        <TextView
+            android:text="Valor da entrada"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/valor_veiculo"
+            android:layout_alignParentStart="true"
+            android:layout_marginTop="18dp"
+            android:id="@+id/entrada_text" />
+
+        <EditText
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:inputType="numberDecimal"
+            android:ems="10"
+            android:layout_below="@+id/entrada_text"
+            android:layout_alignStart="@+id/valor_veiculo"
+            android:layout_marginTop="16dp"
+            android:id="@+id/valor_entrada"
+            android:hint="Digite o valor da entrada" />
+
+        <TextView
+            android:text="Parcelas"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/valor_entrada"
+            android:layout_alignParentStart="true"
+            android:layout_marginTop="17dp"
+            android:id="@+id/parcelas_text" />
+
+        <Spinner
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/parcelas_text"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="10dp"
+            android:id="@+id/parcela_spinner" />
+
+        <TextView
+            android:text="Valor parcela"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/parcela_spinner"
+            android:layout_alignParentStart="true"
+            android:layout_marginTop="12dp"
+            android:id="@+id/valor_parcela_text" />
+
+        <EditText
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:inputType="numberDecimal"
+            android:ems="10"
+            android:layout_below="@+id/valor_parcela_text"
+            android:layout_alignEnd="@+id/valor_entrada"
+            android:layout_marginTop="16dp"
+            android:id="@+id/valor_parcela"
+            android:hint="Aguardando simulação" />
+
+        <Button
+            android:text="Simular"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/simular"
+            style="@android:style/Widget.Button.Inset"
+            android:layout_alignParentBottom="true"
+            android:layout_alignParentStart="true" />
+
+        <Button
+            android:text="Ver"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/ver"
+            style="@android:style/Widget.Button.Inset"
+            android:layout_alignParentBottom="true"
+            android:layout_alignParentEnd="true" />
+
+        <Button
+            android:text="Fechar"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/fechar"
+            style="@android:style/Widget.Button.Inset"
+            android:layout_alignParentBottom="true"
+            android:layout_centerHorizontal="true" />
+
+    </RelativeLayout>
+
+
+
+</ScrollView>
