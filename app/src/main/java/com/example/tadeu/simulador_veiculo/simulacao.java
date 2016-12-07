@@ -21,7 +21,7 @@ public class simulacao extends Activity {
     ArrayAdapter vei_adapter, parc_adapter;
     Button simular, ver, fechar;
     EditText valor_veiculo_text, valor_entrada_text, valor_parcela_text;
-    double porcetagem, valor_veiculo, valor_entrada, juros, entrada_param1, entrada_param2, juros_param1, juros_param2, valor_parcela, valor_restante;
+    double porcetagem, valor_veiculo, valor_entrada, juros, entrada_param1, entrada_param2, juros_param1, juros_param2, valor_parcela, valor_restante, montante;
     Context context = this;
     Intent volta, acessar;
 
@@ -61,24 +61,48 @@ public class simulacao extends Activity {
         juros_param2 = convert_double(taxajuros2);
 
 
-        if (porcetagem<=entrada_param1){
-            juros = juros_param1;
-        }else if (porcetagem>=entrada_param2){
-            juros = juros_param2;
-        }
-
         valor_parcela_text.setEnabled(false);
+        valor_veiculo_text.setEnabled(false);
+        ver.setEnabled(false);
 
         simular.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                carro = vei_spinner.getSelectedItem().toString();
 
-                valor_veiculo = convert_double(valor_veiculo_text.getText().toString());
+                if (carro.equals("Palio")){
+                    setNome("novo-palio-fire/monte-seu-carro.html?modelo=170&versao=17144Z1");
+                    setValorVeiculo(40366);
+
+
+                } else if (carro.equals("Uno")){
+                    setNome("uno/monte-seu-carro.html?modelo=195&versao=195A4N2");
+                    setValorVeiculo(45580);
+
+
+                }else if (carro.equals("Punto")){
+                    setNome("novo-punto/monte-seu-carro.html");
+                    setValorVeiculo(53310);
+
+                }else if (carro.equals("Toro")){
+                    setNome("toro/monte-seu-carro.html");
+                    setValorVeiculo(82930);
+                }
+
+                valor_veiculo = getValorVeiculo();
+
+                valor_veiculo_text.setText(String.valueOf(valor_veiculo));
+
                 valor_entrada = convert_double(valor_entrada_text.getText().toString());
 
                 porcetagem = ((valor_entrada * 100)/valor_veiculo);
                 valor_restante = valor_veiculo-valor_entrada;
 
+                if (porcetagem<=entrada_param1){
+                    juros = juros_param1;
+                }else if (porcetagem>=entrada_param2){
+                    juros = juros_param2;
+                }
 
                 nparc = parc_spinner.getSelectedItem().toString();
 
@@ -94,7 +118,12 @@ public class simulacao extends Activity {
                 }else if (nparc.equals("60")){
                     calcula_parcela(60);
                 }
+                habilita_botao_ver();
+
+
             }
+
+
         });
 
 
@@ -110,23 +139,7 @@ public class simulacao extends Activity {
         ver.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                carro = vei_spinner.getSelectedItem().toString();
-                if (carro.equals("Palio")){
-                    nome = "palio-2017/index.html";
-                    acessar_carro_web(nome);
-
-                } else if (carro.equals("Uno")){
-                    nome = "uno.html";
-                    acessar_carro_web(nome);
-
-                }else if (carro.equals("Punto")){
-                    nome = "novo-punto-2017/index.html";
-                    acessar_carro_web(nome);
-
-                }else if (carro.equals("Toro")){
-                    nome ="toro.html";
-                    acessar_carro_web(nome);
-                }
+                acessar_carro_web(getNome());
             }
         });
 
@@ -142,12 +155,13 @@ public class simulacao extends Activity {
     }
     private double convert_double(String t){
         return Double.parseDouble(t);
+
     }
     private void calcula_parcela(double p){
-        valor_parcela = (valor_restante/p);
-        valor_parcela = valor_parcela +((valor_parcela*juros)/10);
-        String valor = String.valueOf(valor_parcela);
-        valor_parcela_text.setText(valor);
+
+        montante = valor_restante * Math.pow((1 + (juros/100)), p);
+        String m = String.valueOf((montante/p));
+        valor_parcela_text.setText(m);
 
     }
     private Intent retornait(Class classe ){
@@ -157,5 +171,22 @@ public class simulacao extends Activity {
     private void acessar_carro_web(String endereco){
         acessar = new Intent(Intent.ACTION_VIEW).setData(Uri.parse("http://www.fiat.com.br/carros/"+endereco));
         startActivity(acessar);
+    }
+    private void habilita_botao_ver(){
+        if (!carro.equals("Selecione o carro")){
+            ver.setEnabled(true);
+        }
+    }
+    public void setNome(String n){
+        this.nome = n;
+    }
+    public String getNome(){
+        return this.nome;
+    }
+    public void setValorVeiculo(double v){
+        this.valor_veiculo = v;
+    }
+    public double getValorVeiculo(){
+        return this.valor_veiculo;
     }
 }

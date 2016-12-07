@@ -1,6 +1,7 @@
 <resources>
     <string name="app_name">Simulador_Veiculo</string>
     <string-array name="veiculos_array">
+        <item>Selecione o carro</item>
         <item>Palio</item>
         <item>Uno</item>
         <item>Punto</item>

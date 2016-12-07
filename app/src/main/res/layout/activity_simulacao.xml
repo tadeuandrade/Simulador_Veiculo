@@ -56,7 +56,7 @@
             android:layout_marginStart="12dp"
             android:layout_marginTop="14dp"
             android:id="@+id/valor_veiculo"
-            android:hint="Digite o valor do veiculo" />
+            android:hint="Aguardando simulação.." />
 
         <TextView
             android:text="Valor da entrada"
@@ -113,7 +113,7 @@
             android:layout_alignEnd="@+id/valor_entrada"
             android:layout_marginTop="16dp"
             android:id="@+id/valor_parcela"
-            android:hint="Aguardando simulação" />
+            android:hint="Aguardando simulação.." />
 
         <Button
             android:text="Simular"
